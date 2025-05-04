@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaCartPlus, FaEdit, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import {
   TableContainer,
   Table,
@@ -34,9 +34,11 @@ function Products() {
     e.preventDefault();
     navigate(`/search?slug=${inputs.search}`);
   };
+
   useEffect(() => {
     fetchProducts(category);
-  }, [category]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, priceFilter]);
 
   const categories = useMemo(() => {
     if (!products || products.length === 0) return [];

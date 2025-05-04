@@ -1,11 +1,11 @@
 import { useToast } from "@chakra-ui/react";
-import { get, set } from "mongoose";
-import { use } from "react";
 import { createContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const InventoryContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const InventoryProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({});
@@ -105,9 +105,10 @@ export const InventoryProvider = ({ children }) => {
   };
   useEffect(() => {
     fetchCartProducts();
-  }, [token, location.pathname]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const createProduct = async (data, type = "add") => {
+  const createProduct = async (data) => {
     try {
       setLoading(true);
       const res = await fetch(
@@ -640,7 +641,6 @@ export const InventoryProvider = ({ children }) => {
           throw new Error("Error");
         }
         const result = await res.json();
-        console.log(result);
         setMessage(result.message);
         setLoading(false);
         toast({

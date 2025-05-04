@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '@chakra-ui/react'
@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <div>
-      <nav className='flex justify-between items-center py-2  px-3'>
+      <nav className='flex justify-between items-center py-2 px-3 '>
         <Link to={'/'}><h1 className='text-3xl max-sm:text-xl font-bold italic text-text '>DAARJEEX</h1></Link>
         <ul className='flex items-center gap-3'>
           {
